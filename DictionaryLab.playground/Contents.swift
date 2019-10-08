@@ -78,7 +78,7 @@ assert(citiesDict["Indonesia"] == "Jakarta", "Was expecting Jakarta, but got \(S
 | Jon Krakauer | 6.1 |
 */
 
-var authorScores = [String: Double] ("Mark Twain" : 8.9,
+var authorScores = [String : Double] = ("Mark Twain" : 8.9,
                                      "Nathaniel Hawthorne" : 5.1,
                                      "John Steinbeck" : 2.3,
                                      "C.S. Lewis" : 9.9,
@@ -131,15 +131,22 @@ var peopleWithScores: [[String: String]] = [
     ]
 ]
 
-var highestScoringName = ""
-
-for _ in peopleWithScores {
-    for(score, value) in _ {
-        if      // not sure how to do this :(
+var highestScore = 0
+var fullName = " "
+for currentPersonDictionary in peopleWithScores {
+    let scoreAsString = currentPersonDictionary["score"] ?? "0"
+    let scoreAsInt = Int(scoreAsString) ?? 0
+    if scoreAsInt > highestScore {
+        highestScore = scoreAsInt
+        let firstName = currentPersonDictionary["firstName"] ?? "No first name"
+        let lastName = currentPersonDictionary["lastName"] ?? "No last name"
+        fullName = firstName + " " + lastName
     }
 }
+print(fullName)
 
-//assert(highestScoringName == "Garry Mckenzie", "Was expecting Garry Mckenzie, but got \(highestScoringName)")
+
+assert(highestScoringName == "Garry Mckenzie", "Was expecting Garry Mckenzie, but got \(highestScoringName)")
 
 // Question Five
 
