@@ -32,9 +32,10 @@ assert(calAndDanAppleCount == 8, "Was expecting 8, but got \(String(describing: 
 
 // Your code here
 
-for (name, value) in applesDict {
-    applesDict[name] = 0
-    }
+for (key, _) in applesDict {
+    applesDict[key] = 0
+}
+
 for (_, value) in applesDict {
     assert(value == 0, "Was expecting 0, but got \(value)")
 }
@@ -78,11 +79,13 @@ assert(citiesDict["Indonesia"] == "Jakarta", "Was expecting Jakarta, but got \(S
 | Jon Krakauer | 6.1 |
 */
 
-var authorScores = [String : Double] = ("Mark Twain" : 8.9,
-                                     "Nathaniel Hawthorne" : 5.1,
-                                     "John Steinbeck" : 2.3,
-                                     "C.S. Lewis" : 9.9,
-                                     "Jon Krakauer" : 6.1)
+var authorScores = [String: Double] ()
+
+authorScores = ["Mark Twain": 8.9,
+                "Nathaniel Hawthorne": 5.1,
+                "John Steinbeck": 2.3,
+                "C.S. Lewis": 9.9,
+                "Jon Krakauer": 6.1]
 
 
 assert(authorScores["Mark Twain"] == 8.9, "Was expecting 8.9, but got \(String(describing: authorScores["Mark Twain"]))")
@@ -92,11 +95,11 @@ assert(authorScores["C.S. Lewis"] == 9.9, "Was expecting 9.9, but got \(String(d
 assert(authorScores["Jon Krakauer"] == 6.1, "Was expecting 6.1, but got \(String(describing: authorScores["Jon Krakauer"]))")
 
 
-
 // b. Add an additional author named “Erik Larson” with an assigned score of 9.2.
+
 authorScores["Erik Larson"] = 9.2
 
-assert(authorScores["Erik Larson"] == 9.2, "Was expecting 9.2, but got \(authorScores["Erik Larson"])")
+assert(authorScores["Erik Larson"] == 9.2, "Was expecting 9.2, but got \(String(describing: authorScores["Erik Larson"]))")
 
 
 // Question Four
@@ -145,7 +148,6 @@ for currentPersonDictionary in peopleWithScores {
 }
 print(fullName)
 
-
 assert(highestScoringName == "Garry Mckenzie", "Was expecting Garry Mckenzie, but got \(highestScoringName)")
 
 // Question Five
@@ -155,14 +157,19 @@ assert(highestScoringName == "Garry Mckenzie", "Was expecting Garry Mckenzie, bu
 
 var cubeDict: [Int: Int] = [:]
 
-// Your code here
+var cubedValue = 0
 
-//assert(cubeDict.count == 20, "Was expecting 20, but got \(cubeDict.count)")
-//assert(cubeDict[1] == 1, "Was expecting 1, but got \(String(describing: cubeDict[1]))")
-//assert(cubeDict[2] == 8, "Was expecting 8, but got \(String(describing: cubeDict[2]))")
-//assert(cubeDict[3] == 27, "Was expecting 27, but got \(String(describing: cubeDict[3]))")
-//assert(cubeDict[14] == 2744, "Was expecting 2744, but got \(String(describing: cubeDict[14]))")
-//assert(cubeDict[20] == 8000, "Was expecting 8000, but got \(String(describing: cubeDict[20]))")
+for num in 1...20 {
+    cubedValue = (num * num * num)
+    cubeDict[num] = cubedValue
+}
+
+assert(cubeDict.count == 20, "Was expecting 20, but got \(cubeDict.count)")
+assert(cubeDict[1] == 1, "Was expecting 1, but got \(String(describing: cubeDict[1]))")
+assert(cubeDict[2] == 8, "Was expecting 8, but got \(String(describing: cubeDict[2]))")
+assert(cubeDict[3] == 27, "Was expecting 27, but got \(String(describing: cubeDict[3]))")
+assert(cubeDict[14] == 2744, "Was expecting 2744, but got \(String(describing: cubeDict[14]))")
+assert(cubeDict[20] == 8000, "Was expecting 8000, but got \(String(describing: cubeDict[20]))")
 
 
 // Question Six
@@ -175,6 +182,7 @@ var frequencyDict: [Character: Int] = [:]
 
 var mostFrequentChar: Character = "?"
 
-// Your code here
+var mostFChar = 0
+
 
 //assert(mostFrequentChar == "e", "Was expecting e, but got \(mostFrequentChar)")
